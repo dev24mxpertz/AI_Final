@@ -9,7 +9,7 @@
 .Layout_Slide_Box1 {
   width: 110px;
   height: 250px;
-  background-color:red;
+  background-color:black;
   position: absolute;
   bottom: 2%;
   left: 7%;
@@ -19,7 +19,7 @@
 .Layout_Slide_Box2 {
   width: 110px;
   height: 250px;
-  background-color:red;
+  background-color:black;
   position: absolute;
   bottom: 2%;
   left: 13.5%;
