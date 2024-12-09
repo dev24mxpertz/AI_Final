@@ -1,21 +1,17 @@
 {
-  "name": "ai5decfinal",
+  "name": "aifinal12",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-three/drei": "^9.119.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3",
+    "@react-three/drei": "^9.120.4",
+    "@react-three/fiber": "^8.17.10",
+    "cra-template": "1.2.0",
     "gsap": "^3.12.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.2",
     "react-scripts": "5.0.1",
-    "three": "^0.171.0",
-    "web-vitals": "^2.1.4"
+    "three": "^0.171.0"
   },
   "scripts": {
     "start": "react-scripts start",

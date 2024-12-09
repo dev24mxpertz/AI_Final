@@ -9,9 +9,3 @@ body {
   width: 100%;
   height: 100%;
 }
-
-:root {
-  --bg-color: black;
-  --text-color: white;
-  --saffron-color: #ff7722;
-}
