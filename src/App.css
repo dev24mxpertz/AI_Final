@@ -115,20 +115,24 @@ body::-webkit-scrollbar {
 .Earth_Page_container {
   width: 100%;
   height: 201vh;
-  /* background-color: red; */
+  /* background-color: blueviolet; */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   /* padding: 40px; */
+  transform: translate3d(500px, 0px, 0px);
   margin-top: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 .Earth_Page_container_content_div {
   /* background-color: #fc8100; */
-  position: absolute;
-  top: 0%;
-  padding: 40px;
+  /* position: absolute;
+  top: 0%; */
+  padding: 100px 40px;
+  height: 50%;
 }
 
 .Earth_Page_container_content_div_h1 {
@@ -141,24 +145,191 @@ body::-webkit-scrollbar {
   word-spacing: 10px;
 }
 
-.Earth_Page_container_content_div_h3{
+.Earth_Page_container_content_div_h3 {
   font-size: 20px;
   font-weight: 800;
   font-family: Joyride W05 STD;
   font-style: normal;
   text-transform: uppercase;
   color: black;
-    word-spacing: 10px;
+  word-spacing: 10px;
 }
 
-.Earth_Page_modelcontainer{
-  /* background-color: black; */
+.Earth_Page_modelcontainer {
+  background-color: black;
   position: absolute;
   top: 38%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   /* border: 2px  solid black; */
   padding: 10px;
   width: 100%;
   height: 55vh;
+}
+
+.Earth_Page_container_lower_div {
+  width: 100%;
+  height: 50%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 80px;
+}
+
+.Earth_Page_container_lower_div_h2 {
+  font-size: 36px;
+  font-weight: 800;
+  font-family: Joyride W05 STD;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.Earth_Page_container_lower_div_h2_span {
+  color: #fc8100;
+}
+
+.Earth_Page_container_lower_div_h2_span2 {
+  color: #fc8100;
+  font-style: italic;
+  margin-right: 20px;
+}
+
+.Earth_Page_container_lower_div_ratebox {
+  width: 65%;
+  padding: 20px;
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 80px 0px;
+}
+
+.Earth_Page_container_lower_div_ratebox_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color:#fc8100; */
+  padding: 10px;
+}
+
+.Earth_Page_container_lower_div_ratebox_box_h3 {
+  font-size: 72px;
+  font-weight: 800;
+  font-family: Joyride W05 STD;
+  font-style: normal;
+}
+
+.Earth_Page_container_lower_div_ratebox_box_p {
+  font-size: 22px;
+  font-weight: 800;
+  font-family: Joyride W05 STD;
+  font-style: normal;
+  text-transform: uppercase;
+}
+.Earth_Page_container_lower_div_grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: blueviolet; */
+  padding: 20px;
+  width: 65%;
+}
+
+.Earth_Page_container_lower_div_gridbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.Earth_Page_container_lower_div_gridbox_h3 {
+  font-size: 22px;
+  font-weight: 800;
+  font-family: Joyride W05 STD;
+  font-style: normal;
+}
+
+/* ---------------------------------------------Page3_main_container */
+
+.Page3_main_container {
+  width: 100%;
+  height: 101vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+
+.Page3_content_box{
+  width: 25%;
+  height: 60%;
+  /* background-color: red; */
+  border-radius: 10px;
+  margin: 0px 20px;
+  border: 3px solid #fc8100;
+  transform: none !important;
+}
+
+
+.Page4_main_container{
+  width: 100%;
+  height: 100vh;
+  /* background-color: red; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center; */
+  padding: 40px;
+}
+
+.Page4_grid_container{
+  width: 100%;
+  height: 80%;
+  /* background-color: blue; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+}
+
+.Page4_grid_container_box{
+  width: 18%;
+  height: 100%;
+  border: 2px solid #fc8100;
+  border-radius: 10px;
+}
+
+.Page4_main_container_p{
+   font-size: 22px;
+  font-weight: 800;
+  font-family: Joyride W05 STD;
+  font-style: normal; 
+}
+
+.Page5_main_container{
+  width: 100%;
+  height: 100vh;
+  /* background-color: aqua; */
+  padding: 40px;
+}
+
+.Page5_grid_container{
+width: 100%;
+height: 90%;
+/* background-color: blue; */
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+padding: 20px;
+}
+
+.Page5_grid_container_box{
+  width: 18%;
+  height: 100%;
+  border:  2px solid #fc8100;
+  border-radius: 10px;
 }
