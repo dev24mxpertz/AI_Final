@@ -10,7 +10,7 @@
 .Loading_overlaydiv {
   position: absolute;
   top: 50%;
-  left: -50%;
+  left: 0%;
   transform: translate(50%, -50%);
   background-color: black;
   width: 0%;
