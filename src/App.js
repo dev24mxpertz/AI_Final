@@ -34,9 +34,10 @@ const App = () => {
         ease: "power2.out",
       })
       .to(".Loading_overlaydiv", {
-        left: "50%",
+        left: "100%",
         transform: "translate(50%, -50%)",
         width: "0%",
+        opacity:0,
         ease: "power2.out",
         duration: 0.5,
         onComplete: () => {
@@ -45,7 +46,7 @@ const App = () => {
             duration: 0.1,
           });
         },
-      });
+      } , "-=0.5");
 
     const loadingNumberTimeline = gsap.timeline({
       onUpdate: () => {
