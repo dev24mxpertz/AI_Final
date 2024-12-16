@@ -1,12 +1,8 @@
 .Layout_container {
   width: 100%;
   height: 100vh;
-  background-color: blue;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 10px;
   position: relative;
   overflow: hidden;
 }
@@ -14,22 +10,27 @@
 .Loading_overlaydiv {
   position: absolute;
   top: 50%;
-  left: 0; /* Start from the left */
-  transform: translate(0, -50%);
+  left: -50%;
+  transform: translate(50%, -50%);
   background-color: black;
-  width: 0%; /* Initially hidden */
+  width: 0%;
   height: 100%;
-  opacity: 0; /* Ensure it's visible */
+  opacity: 0;
+  z-index: 6;
 }
 
 .Loading_container {
   width: 100%;
-  height: 100vh;
-  background-color: red;
+  height: 95vh;
+  background-color:white;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
 }
 
 .image_container {
@@ -41,81 +42,92 @@
   bottom: 10%;
   right: 10%;
   padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 72px;
   font-family: Joyride W05 STD;
 }
 
-.Hero_page_container {
-  width: 0%;
-  height: 0%;
-  /* padding: 10px; */
-  opacity: 0;
-  background-color: yellow;
+.scroll-section-container {
   display: flex;
-  justify-content: flex-start;
-  align-content: center;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  position: relative;
+  z-index: 3;
+}
+
+.scroll-section {
+  flex: 0 0 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: lightblue; */
   position: relative;
 }
 
-.Hero_page_container_content_box {
-  /* width: 100%; */
-  /* height: 70vh; */
-
-  /* padding: 40px; */
-  /* background-color: white; */
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-  /* justify-content: center; */
-  margin: 40px;
-  align-content: flex-start;
-  width: 0%;
-  opacity: 0;
-  z-index: 2;
+.scroll-section:nth-child(2) {
+  background: lightcoral;
 }
 
-.Hero_page_container_content_box > p {
-  font-size: 22px;
-  font-weight: 800;
-  /* background-color: orange; */
-  font-family: Joyride W05 STD;
+.scroll-section:nth-child(3) {
+  background: lightgreen;
 }
 
-.Hero_page_container_content_button_box {
-  width: 100%;
-  padding: 20px 0px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.Hero_page_container_content_button_box > :nth-child(2) {
-  margin-left: 20px;
-}
-
-.Hero_page_container_content_button_box_button {
-  width: 35%;
-  padding: 20px 10px;
-  outline: none;
-  border: none;
-  background-color: white;
-  border: 2px solid #ff7722;
-  border-radius: 10px;
-  font-size: 18px;
-  font-family: Joyride W05 STD;
-}
-
-.ModelCanvas_div {
+.section1content {
+  /* background-color: red; */
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 32%;
+  left: 29%;
   transform: translate(-50%, -50%);
-  width: 0%;
-  height: 100%;
-  background-color: green;
-  z-index: 1;
-  opacity: 0;
+  padding: 10px;
+}
+
+.section1content h1 {
+  font-size: 7rem;
+  font-family: Joyride W05 STD;
+  text-transform: uppercase;
+  color: black;
+}
+
+.section1content h3 {
+  font-size: 7rem;
+  font-family: "Joyride W05 STD", sans-serif;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: transparent; /* Makes the inside of the text transparent */
+  -webkit-text-stroke: 0.3px black; /* Defines the text border width and color */
+  -webkit-text-fill-color: transparent; /* Ensures only the border is visible */
+  line-height: 50px;
+  word-spacing: -40px;
+}
+
+.section1content p {
+  font-size: 1.3rem;
+  font-family: "Joyride W05 STD", sans-serif;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: black;
+  margin: 60px 0px;
+}
+
+.section1content_buttoncontainer {
+  width: 100%;
+  display: flex;
+  margin: 10px 0px;
+}
+
+.section1content_buttoncontainer_button {
+  width: 40%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-family: "Joyride W05 STD";
+  color: black;
+  margin: 0px 10px;
+  border-radius: 10px;
+  border:2px solid #FC8100
 }
