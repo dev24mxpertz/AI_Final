@@ -5,107 +5,146 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-import glbModel from "./3Dassets/INFINITY.glb"
+import glbModel from "./3Dassets/INFINITY.glb";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
   const [loadingNumber, setLoadingNumber] = useState("00");
-  const modelRef   =  useRef(null)
+  const modelRef = useRef(null);
 
-  useEffect(() => {
-    const loadingWindowAnimation = gsap.timeline({
-      paused: true,
-    });
+useEffect(() => {
+  const loadingWindowAnimation = gsap.timeline({ paused: true });
 
-    loadingWindowAnimation
-      .to(".Loading_overlaydiv", {
-        width: "100%",
-        left: "50%",
-        transform: " translate(-50%, -50%)",
-        opacity: 1,
-        ease: "power2.in",
-        duration: 0.5,
-      })
-      .to(".Loading_container", {
-        height: 0,
+  loadingWindowAnimation
+    .to(".Loading_overlaydiv", {
+      width: "100%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      opacity: 1,
+      ease: "power2.in",
+      duration: 0.5,
+    })
+    .to(".Loading_container", {
+      height: 0,
+      opacity: 0,
+      duration: 0.5,
+      ease: "power2.out",
+    })
+    .to(".scroll-section-container", {
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.out",
+    })
+    .to(
+      ".Loading_overlaydiv",
+      {
+        left: "100%",
+        transform: "translate(50%, -50%)",
+        width: "0%",
         opacity: 0,
-        duration: 0.5,
         ease: "power2.out",
-      })
-      .to(".scroll-section-container", {
-        opacity: 1,
         duration: 0.5,
-        ease: "power2.out",
-      })
-      .to(
-        ".Loading_overlaydiv",
-        {
-          left: "100%",
-          transform: "translate(50%, -50%)",
-          width: "0%",
-          opacity: 0,
-          ease: "power2.out",
-          duration: 0.5,
-          onComplete: () => {
-            gsap.to(".Layout_container", {
-              height: "100vh",
-              duration: 0.1,
-            });
-          },
+        onComplete: () => {
+          sectionsAnimation();
         },
-        "-=0.5"
+      },
+      "-=0.5"
+    );
+
+  const loadingNumberTimeline = gsap.timeline({
+    onUpdate: () => {
+      const progress = Math.floor(loadingNumberTimeline.progress() * 100);
+      setLoadingNumber(progress.toString().padStart(2, "0"));
+    },
+    onComplete: () => {
+      loadingWindowAnimation.play();
+    },
+  });
+
+  loadingNumberTimeline.to({}, { duration: 3 });
+
+  // Scroll Animations for Sections
+  const sectionsAnimation = () => {
+    const sections = document.querySelectorAll(".scroll-section");
+
+    sections.forEach((section, index) => {
+      const content = section.querySelector(
+        ".section1content, .section2content"
       );
 
-    const loadingNumberTimeline = gsap.timeline({
+      if (!content) {
+        console.warn(`No animatable content found in section ${index}`);
+        return;
+      }
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top center",
+            end: "bottom center",
+            toggleActions: "play none none none",
+          },
+        })
+        .fromTo(
+          content,
+          { x: -100, opacity: 0 },
+          { x: 0, opacity: 1, duration: 1, ease: "power2.out" }
+        );
+    });
+  };
+
+  const container = document.querySelector(".scroll-section-container");
+  const sections = document.querySelectorAll(".scroll-section");
+  let currentIndex = 0;
+  let isAnimating = false;
+
+  const updateModelTransform = (index) => {
+    const currentTranslateX = -50 + index * 100; // Calculate the new translate percentage
+    gsap.to(".Model1_container", {
+      opacity: 1,
+      transform: `translate(${currentTranslateX}%, -50%)`,
+      duration: 0.6,
+      ease: "power2.out",
       onUpdate: () => {
-        const progress = Math.floor(loadingNumberTimeline.progress() * 100);
-        setLoadingNumber(progress.toString().padStart(2, "0"));
-      },
-      onComplete: () => {
-        loadingWindowAnimation.play();
+        sectionsAnimation();
       },
     });
+  };
 
-    loadingNumberTimeline.to({}, { duration: 3 });
-  }, []);
+  const scrollToSection = (index) => {
+    isAnimating = true;
+    container.scrollTo({
+      left: index * window.innerWidth,
+      behavior: "smooth",
+    });
 
-  useEffect(() => {
-    const container = document.querySelector(".scroll-section-container");
-    const sections = document.querySelectorAll(".scroll-section");
-    let currentIndex = 0;
-    let isAnimating = false;
+    updateModelTransform(index);
 
-    const scrollToSection = (index) => {
-      isAnimating = true;
-      container.scrollTo({
-        left: index * window.innerWidth,
-        behavior: "smooth",
-      });
+    setTimeout(() => {
+      isAnimating = false;
+    }, 600);
+  };
 
-      setTimeout(() => {
-        isAnimating = false;
-      }, 600);
-    };
+  const onScroll = (e) => {
+    if (isAnimating) return;
+    e.preventDefault();
+    if (e.deltaY > 0 && currentIndex < sections.length - 1) {
+      currentIndex++;
+      scrollToSection(currentIndex);
+    } else if (e.deltaY < 0 && currentIndex > 0) {
+      currentIndex--;
+      scrollToSection(currentIndex);
+    }
+  };
 
-    const onScroll = (e) => {
-      if (isAnimating) return;
-      e.preventDefault();
-      if (e.deltaY > 0 && currentIndex < sections.length - 1) {
-        currentIndex++;
-        scrollToSection(currentIndex);
-      } else if (e.deltaY < 0 && currentIndex > 0) {
-        currentIndex--;
-        scrollToSection(currentIndex);
-      }
-    };
+  container.addEventListener("wheel", onScroll);
 
-    container.addEventListener("wheel", onScroll);
-
-    return () => {
-      container.removeEventListener("wheel", onScroll);
-    };
-  }, []);
+  return () => {
+    container.removeEventListener("wheel", onScroll);
+  };
+}, []);
 
 
   const Model = ({ path, position }) => {
@@ -134,6 +173,14 @@ const App = () => {
         <div className="Loading_Number_div">{loadingNumber}</div>
       </div>
       <div className="scroll-section-container">
+        <div className="Model1_container">
+          <Canvas camera={{ position: [-0.014622406, -3.5403, -0.0213045] }}>
+            <ambientLight intensity={1} />
+            <pointLight position={[10, 10, 10]} intensity={2} />
+            <Model path={glbModel} position={[2, 0, 0]} />
+            <OrbitControls />
+          </Canvas>
+        </div>
         <div className="scroll-section anim">
           <div className="section1content">
             <h1>Reinvent </h1>
@@ -151,14 +198,6 @@ const App = () => {
                 CTA 2
               </button>
             </div>
-          </div>
-          <div className="Model1_container">
-            <Canvas camera={{ position: [-0.014622406, -3.5403, -0.0213045] }}>
-              <ambientLight intensity={1} />
-              <pointLight position={[10, 10, 10]} intensity={2} />
-              <Model path={glbModel} position={[2, 0, 0]} />
-              {/* <OrbitControls /> */}
-            </Canvas>
           </div>
         </div>
         <div className="scroll-section anim">
@@ -348,14 +387,9 @@ const App = () => {
       <div className="Loading_overlaydiv"></div>
     </div>
   );
-
-
-  
 };
 
 export default App;
-
-
 
 // import React, { useEffect, useRef, useState } from "react";
 // import Logo_image from "./assets/Logo_image.png";
@@ -469,8 +503,6 @@ export default App;
 //     };
 //   }, []);
 
-  
-
 //   // Model Component
 //   const Model = ({ path, position }) => {
 //     const { scene } = useGLTF(path);
@@ -529,8 +561,8 @@ export default App;
 //               <ambientLight intensity={1} />
 //               <pointLight position={[10, 10, 10]} intensity={2} />
 //               <Model path={glbModel} position={[2, 0, 0]} />
-//               <OrbitControls 
-//                 onChange={(e) => setCameraPosition(e.target.object.position.toArray())} 
+//               <OrbitControls
+//                 onChange={(e) => setCameraPosition(e.target.object.position.toArray())}
 //               />
 //             </Canvas>
 //           </div>

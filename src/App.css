@@ -68,8 +68,10 @@
   left: 50%;
   width: 100%;
   height: 100%;
+  z-index: 10;
   transform: translate(-50%,-50%);
-  background-color: transparent;
+  /* background-color: red; */
+
 }
 
 
@@ -82,6 +84,8 @@
 .section1content {
   padding: 10px;
   z-index: 999;
+  /* background-color: blue; */
+  opacity: 0;
 }
 .section1content h1 {
   font-size: 5rem;
