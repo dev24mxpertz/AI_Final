@@ -6,7 +6,6 @@
   position: relative;
   overflow: hidden;
 }
-
 .Loading_overlaydiv {
   position: absolute;
   top: 50%;
@@ -18,7 +17,6 @@
   opacity: 0;
   z-index: 6;
 }
-
 .Loading_container {
   width: 100%;
   height: 95vh;
@@ -32,20 +30,17 @@
   transform: translate(-50%, -50%);
   z-index: 5;
 }
-
 .image_container {
   width: 350px;
 }
-
 .Loading_Number_div {
   position: absolute;
   bottom: 10%;
   right: 10%;
   padding: 10px;
   font-size: 72px;
-  font-family: Joyride W05 STD;
+  font-family: "Joyride W05 STD";
 }
-
 .scroll-section-container {
   display: flex;
   flex-direction: row;
@@ -56,7 +51,6 @@
   position: relative;
   z-index: 3;
 }
-
 .scroll-section {
   flex: 0 0 100%;
   height: 100vh;
@@ -68,57 +62,57 @@
   padding: 40px;
 }
 
+.Model1_container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%,-50%);
+  background-color: transparent;
+}
+
+
 .scroll-section:nth-child(2) {
   background: black;
 }
-
 .scroll-section:nth-child(3) {
   background: black;
 }
-
 .section1content {
-  /* background-color: red; */
-  position: absolute;
-  top: 32%;
-  left: 29%;
-  transform: translate(-50%, -50%);
   padding: 10px;
+  z-index: 999;
 }
-
 .section1content h1 {
-  font-size: 7rem;
+  font-size: 5rem;
   font-family: Joyride W05 STD;
   text-transform: uppercase;
   color: white;
 }
-
 .section1content h3 {
-  font-size: 7rem;
+  font-size: 5rem;
   font-family: "Joyride W05 STD", sans-serif;
   text-transform: uppercase;
   background-color: transparent;
-  color: transparent; /* Makes the inside of the text transparent */
-  -webkit-text-stroke: 0.3px white; /* Defines the text border width and color */
-  -webkit-text-fill-color: transparent; /* Ensures only the border is visible */
+  color: transparent;
+  -webkit-text-stroke: 0.3px white;
+  -webkit-text-fill-color: transparent;
   line-height: 50px;
-  word-spacing: -40px;
+  word-spacing: -30px;
 }
-
 .section1content p {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-family: "Joyride W05 STD", sans-serif;
   text-transform: uppercase;
   background-color: transparent;
   color: white;
   margin: 60px 0px;
 }
-
 .section1content_buttoncontainer {
   width: 100%;
   display: flex;
   margin: 10px 0px;
 }
-
 .section1content_buttoncontainer_button {
   width: 40%;
   padding: 20px;
@@ -132,32 +126,26 @@
   border-radius: 10px;
   border: 2px solid #fc8100;
 }
-
 .section2content {
-  padding: 40px;
-  /* background-color: red; */
+  padding: 10px;
 }
-
 .section2content > h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   font-family: "Joyride W05 STD";
   text-transform: uppercase;
   color: #fc8100;
 }
-
 .section2content > h3 {
-  font-size: 4rem;
+  font-size: 3rem;
   font-family: "Joyride W05 STD";
   background-color: transparent;
-  color: transparent; /* Makes the inside of the text transparent */
-  -webkit-text-stroke: 0.3px white; /* Defines the text border width and color */
-  -webkit-text-fill-color: transparent; /* Ensures only the border is visible */
-  line-height: 70px;
+  color: transparent;
+  -webkit-text-stroke: 0.3px white;
+  -webkit-text-fill-color: transparent;
+  line-height:50px;
   margin: 20px 0px;
   font-stretch: extra-expanded;
-  /* word-spacing: -40px; */
 }
-
 .section2content > p {
   font-size: 1rem;
   font-family: "Joyride W05 STD";
@@ -165,64 +153,39 @@
   margin: 20px 0px;
   text-transform: uppercase;
   color: white;
-  /* word-spacing: -40px; */
 }
-
 .section3content {
   width: 100%;
-  /* height: 100%; */
-  /* background-color: black; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
-
 .section3content > h1 {
-  font-size: 5rem;
+  font-size: 2rem;
   font-family: "Joyride W05 STD";
   text-transform: uppercase;
   color: white;
 }
-
 .section3content > h3 {
   width: 100%;
   text-align: center;
   font-stretch: expanded;
-  word-spacing: 20px;
   padding: 0px 40px;
-  /* background-color: red; */
   font-size: 2rem;
   font-family: "Joyride W05 STD";
   text-transform: uppercase;
   color: #fc8100;
 }
-
 .section3content_headingbox {
   width: 100%;
-  padding: 20px;
-  /* background-color: red; */
+  padding: 20px 0px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin: 120px 0px;
 }
-
 .section3content_headingbox > h3 {
   width: 100%;
-  /* background-color: red; */
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  text-transform: uppercase;
-  font-family: "Joyride W05 STD";
-  color: white;
-}
-
-.section3content_headingbox > p {
-  width: 100%;
-  padding: 10px 35px;
-  /* background-color: red; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -231,34 +194,42 @@
   color: white;
   text-align: center;
 }
-
+.section3content_headingbox > p {
+  width: 100%;
+  font-size: 0.7rem;
+  padding: 10px 35px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-transform: uppercase;
+  font-family: "Joyride W05 STD";
+  color: white;
+  text-align: center;
+}
 .section4content {
   width: 100%;
   height: 100%;
-  padding: 20px;
   background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 }
-
 .section4content > h2 {
   text-transform: uppercase;
   font-family: "Joyride W05 STD";
   color: white;
+  font-size: 1rem;
 }
-
 .section4content_container {
   width: 100%;
-  height: 70%;
+  height: 85%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
-
 .section4content_box {
-  width: 30%;
+  width: 40%;
   height: 100%;
   background-color: black;
   border-radius: 10px;
@@ -268,19 +239,19 @@
   justify-content: space-evenly;
   align-items: center;
 }
-
-.section4content_box>h3{
+.section4content_box > h3 {
   color: white;
+  font-size: 0.7rem;
   padding: 0px 20px;
   text-align: center;
 }
-.section4content_box>p{
+.section4content_box > p {
   color: white;
   padding: 0px 20px;
   text-align: center;
+  font-size: 0.5rem;
 }
-
-.section4content_box>button{
+.section4content_box > button {
   color: black;
   padding: 20px 60px;
   display: flex;
@@ -290,9 +261,9 @@
   border: 2px solid #fc8100;
   border-radius: 10px;
   background-color: white;
-    font-family: "Joyride W05 STD";
+  font-family: "Joyride W05 STD";
+  font-size: 1rem;
 }
-
 .section5content {
   width: 100%;
   height: 100%;
@@ -302,21 +273,18 @@
   justify-content: space-evenly;
   align-items: center;
 }
-
-
-.section5content>h2 {
+.section5content > h2 {
   text-align: center;
   color: white;
+font-size: 1rem;
 }
-
-.section5content_container{
+.section5content_container {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  height: 75%;
+  min-height: 80%;
 }
-
 .section5content_box {
   width: 15%;
   height: 100%;
@@ -328,25 +296,22 @@
   justify-content: space-evenly;
   align-items: center;
 }
-
-.section5content_box>h3{
-    text-transform: uppercase;
+.section5content_box > h3 {
+  text-transform: uppercase;
   font-family: "Joyride W05 STD";
   color: white;
   text-align: center;
   padding: 10px;
+  font-size: 0.8rem;
 }
-
-.section5content_box>p{
-    text-transform: uppercase;
+.section5content_box > p {
+  text-transform: uppercase;
   font-family: "Joyride W05 STD";
   color: white;
   text-align: center;
   padding: 10px;
+  font-size: 0.5rem;
 }
-
-/* ------------------------------------ */
-
 .section6content {
   width: 100%;
   height: 100%;
@@ -356,25 +321,20 @@
   justify-content: space-evenly;
   align-items: center;
 }
-
-
-.section6content>h2{
-      text-transform: uppercase;
+.section6content > h2 {
+  text-transform: uppercase;
   font-family: "Joyride W05 STD";
   color: white;
   text-align: center;
-
+  font-size: 1rem;
 }
-
-.section6content_container{
+.section6content_container {
   width: 100%;
   height: 75%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
-
-
 .section6content_box {
   width: 15%;
   height: 100%;
@@ -386,22 +346,42 @@
   justify-content: space-evenly;
   align-content: center;
 }
-
-.section6content_box>h3{
+.section6content_box > h3 {
   text-align: center;
   color: white;
   padding: 10px;
+  font-size: 0.8rem;
+}
+.section6content_box > h4 {
+  text-align: center;
+  color: white;
+  padding: 10px;
+  font-size: 0.7rem;
+}
+.section6content_box > p {
+  text-align: center;
+  color: white;
+  padding: 10px;
+  font-size: 0.5rem;
 }
 
-.section6content_box>h4{
-  text-align: center;
+
+.position-info {
+  position: fixed;
+  top: 10px;
+  left: 10px;
   color: white;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 10px;
+  border-radius: 5px;
 }
 
 
-.section6content_box>p{
-  text-align: center;
-  color: white;
-  padding: 10px;
+
+
+
+@media (min-width: 600px) and (max-width: 1300px) {
+  /* Styles for screen widths between 600px and 1200px */
+ 
 }

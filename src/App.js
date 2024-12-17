@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo_image from "./assets/Logo_image.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
+import * as THREE from "three";
+import glbModel from "./3Dassets/INFINITY.glb"
 
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
   const [loadingNumber, setLoadingNumber] = useState("00");
+  const modelRef   =  useRef(null)
 
   useEffect(() => {
     const loadingWindowAnimation = gsap.timeline({
@@ -102,13 +107,32 @@ const App = () => {
     };
   }, []);
 
+
+  const Model = ({ path, position }) => {
+    const { scene } = useGLTF(path);
+
+    useEffect(() => {
+      const whiteMaterial = new THREE.MeshStandardMaterial({
+        color: "white",
+        roughness: 0.5,
+      });
+
+      scene.traverse((child) => {
+        if (child.isMesh) {
+          child.material = whiteMaterial;
+        }
+      });
+    }, [scene]);
+
+    return <primitive ref={modelRef} object={scene} position={position} />;
+  };
+
   return (
     <div className="Layout_container">
       <div className="Loading_container">
         <img src={Logo_image} className="image_container" alt="Logo" />
         <div className="Loading_Number_div">{loadingNumber}</div>
       </div>
-
       <div className="scroll-section-container">
         <div className="scroll-section anim">
           <div className="section1content">
@@ -127,6 +151,14 @@ const App = () => {
                 CTA 2
               </button>
             </div>
+          </div>
+          <div className="Model1_container">
+            <Canvas camera={{ position: [-0.014622406, -3.5403, -0.0213045] }}>
+              <ambientLight intensity={1} />
+              <pointLight position={[10, 10, 10]} intensity={2} />
+              <Model path={glbModel} position={[2, 0, 0]} />
+              {/* <OrbitControls /> */}
+            </Canvas>
           </div>
         </div>
         <div className="scroll-section anim">
@@ -175,7 +207,6 @@ const App = () => {
             </div>
           </div>
         </div>
-        {/* ---- */}
         <div className="scroll-section anim">
           <div className="section4content">
             <h2>OUR SUITE OF SERVICES</h2>
@@ -205,7 +236,6 @@ const App = () => {
             </div>
           </div>
         </div>
-        {/* -------------- */}
         <div className="scroll-section anim">
           <div className="section5content">
             <h2>
@@ -262,7 +292,6 @@ const App = () => {
             </div>
           </div>
         </div>
-        {/* ---------------------- */}
         <div className="scroll-section anim">
           <div className="section6content">
             <h2>Partner with us to achieve your vision and mission </h2>
@@ -316,10 +345,204 @@ const App = () => {
           </div>
         </div>
       </div>
-
       <div className="Loading_overlaydiv"></div>
     </div>
   );
+
+
+  
 };
 
 export default App;
+
+
+
+// import React, { useEffect, useRef, useState } from "react";
+// import Logo_image from "./assets/Logo_image.png";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { Canvas, useFrame } from "@react-three/fiber";
+// import { OrbitControls, useGLTF } from "@react-three/drei";
+// import * as THREE from "three";
+// import glbModel from "./3Dassets/INFINITY.glb";
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const App = () => {
+//   const [loadingNumber, setLoadingNumber] = useState("00");
+//   const modelRef = useRef(null);
+//   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+//   const [cameraPosition, setCameraPosition] = useState([-0.014622406, -3.5403, -0.0213045]);
+//   const [modelPosition, setModelPosition] = useState([2, 0, 0]);
+
+//   useEffect(() => {
+//     const loadingWindowAnimation = gsap.timeline({
+//       paused: true,
+//     });
+
+//     loadingWindowAnimation
+//       .to(".Loading_overlaydiv", {
+//         width: "100%",
+//         left: "50%",
+//         transform: " translate(-50%, -50%)",
+//         opacity: 1,
+//         ease: "power2.in",
+//         duration: 0.5,
+//       })
+//       .to(".Loading_container", {
+//         height: 0,
+//         opacity: 0,
+//         duration: 0.5,
+//         ease: "power2.out",
+//       })
+//       .to(".scroll-section-container", {
+//         opacity: 1,
+//         duration: 0.5,
+//         ease: "power2.out",
+//       })
+//       .to(
+//         ".Loading_overlaydiv",
+//         {
+//           left: "100%",
+//           transform: "translate(50%, -50%)",
+//           width: "0%",
+//           opacity: 0,
+//           ease: "power2.out",
+//           duration: 0.5,
+//           onComplete: () => {
+//             gsap.to(".Layout_container", {
+//               height: "100vh",
+//               duration: 0.1,
+//             });
+//           },
+//         },
+//         "-=0.5"
+//       );
+
+//     const loadingNumberTimeline = gsap.timeline({
+//       onUpdate: () => {
+//         const progress = Math.floor(loadingNumberTimeline.progress() * 100);
+//         setLoadingNumber(progress.toString().padStart(2, "0"));
+//       },
+//       onComplete: () => {
+//         loadingWindowAnimation.play();
+//       },
+//     });
+
+//     loadingNumberTimeline.to({}, { duration: 3 });
+//   }, []);
+
+//   useEffect(() => {
+//     const container = document.querySelector(".scroll-section-container");
+//     const sections = document.querySelectorAll(".scroll-section");
+//     let currentIndex = 0;
+//     let isAnimating = false;
+
+//     const scrollToSection = (index) => {
+//       isAnimating = true;
+//       container.scrollTo({
+//         left: index * window.innerWidth,
+//         behavior: "smooth",
+//       });
+
+//       setTimeout(() => {
+//         isAnimating = false;
+//       }, 600);
+//     };
+
+//     const onScroll = (e) => {
+//       if (isAnimating) return;
+//       e.preventDefault();
+//       if (e.deltaY > 0 && currentIndex < sections.length - 1) {
+//         currentIndex++;
+//         scrollToSection(currentIndex);
+//       } else if (e.deltaY < 0 && currentIndex > 0) {
+//         currentIndex--;
+//         scrollToSection(currentIndex);
+//       }
+//     };
+
+//     container.addEventListener("wheel", onScroll);
+
+//     return () => {
+//       container.removeEventListener("wheel", onScroll);
+//     };
+//   }, []);
+
+  
+
+//   // Model Component
+//   const Model = ({ path, position }) => {
+//     const { scene } = useGLTF(path);
+
+//     useEffect(() => {
+//       const whiteMaterial = new THREE.MeshStandardMaterial({
+//         color: "white",
+//         roughness: 0.5,
+//       });
+
+//       scene.traverse((child) => {
+//         if (child.isMesh) {
+//           child.material = whiteMaterial;
+//         }
+//       });
+//     }, [scene]);
+
+//     useFrame(() => {
+//       if (modelRef.current) {
+//         modelRef.current.position.x = position[0] + mousePosition.x * 0.5;
+//         modelRef.current.position.y = position[1] + mousePosition.y * 0.5;
+//         setModelPosition([modelRef.current.position.x, modelRef.current.position.y, modelRef.current.position.z]); // Update model position
+//       }
+//     });
+
+//     return <primitive ref={modelRef} object={scene} position={position} />;
+//   };
+
+//   return (
+//     <div className="Layout_container">
+//       <div className="Loading_container">
+//         <img src={Logo_image} className="image_container" alt="Logo" />
+//         <div className="Loading_Number_div">{loadingNumber}</div>
+//       </div>
+//       <div className="scroll-section-container">
+//         <div className="scroll-section anim">
+//           <div className="section1content">
+//             <h1>Reinvent </h1>
+//             <h3>VALUE CHAIN</h3>
+//             <p>
+//               Solve unique problems boost productivity, efficiency, and
+//               <br />
+//               profitability with Bespoke AI solutions.
+//             </p>
+//             <div className="section1content_buttoncontainer">
+//               <button className="section1content_buttoncontainer_button">
+//                 CTA 1
+//               </button>
+//               <button className="section1content_buttoncontainer_button">
+//                 CTA 2
+//               </button>
+//             </div>
+//           </div>
+//           <div className="Model1_container">
+//             <Canvas camera={{ position: cameraPosition }}>
+//               <ambientLight intensity={1} />
+//               <pointLight position={[10, 10, 10]} intensity={2} />
+//               <Model path={glbModel} position={[2, 0, 0]} />
+//               <OrbitControls 
+//                 onChange={(e) => setCameraPosition(e.target.object.position.toArray())} 
+//               />
+//             </Canvas>
+//           </div>
+//           <div className="position-info">
+//             <h3>Camera Position: {cameraPosition.join(", ")}</h3>
+//             <h3>Model Position: {modelPosition.join(", ")}</h3>
+//           </div>
+//         </div>
+//       </div>
+//       <div className="Loading_overlaydiv"></div>
+//     </div>
+//   );
+// };
+
+// export default App;
