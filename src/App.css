@@ -84,7 +84,6 @@
 .section1content {
   padding: 10px;
   z-index: 999;
-  /* background-color: blue; */
   opacity: 0;
 }
 .section1content h1 {
@@ -132,6 +131,7 @@
 }
 .section2content {
   padding: 10px;
+  z-index: 999;
 }
 .section2content > h1 {
   font-size: 4rem;
@@ -164,6 +164,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+    z-index: 999;
 }
 .section3content > h1 {
   font-size: 2rem;
@@ -218,6 +219,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+    z-index: 999;
 }
 .section4content > h2 {
   text-transform: uppercase;
@@ -276,6 +278,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+    z-index: 999;
 }
 .section5content > h2 {
   text-align: center;
@@ -324,6 +327,7 @@ font-size: 1rem;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+    z-index: 999;
 }
 .section6content > h2 {
   text-transform: uppercase;
