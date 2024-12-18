@@ -70,7 +70,7 @@ useEffect(() => {
 
     sections.forEach((section, index) => {
       const content = section.querySelector(
-        ".section1content, .section2content"
+        ".section1content, .section2content , .section3content, .section4content ,  .section5content , .section6content"
       );
 
       if (!content) {
@@ -178,7 +178,7 @@ useEffect(() => {
             <ambientLight intensity={1} />
             <pointLight position={[10, 10, 10]} intensity={2} />
             <Model path={glbModel} position={[2, 0, 0]} />
-            <OrbitControls />
+          {/*  <OrbitControls /> */}
           </Canvas>
         </div>
         <div className="scroll-section anim">
