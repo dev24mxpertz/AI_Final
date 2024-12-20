@@ -19,7 +19,7 @@
 }
 .Loading_container {
   width: 100%;
-  height: 95vh;
+  height: 100vh;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -171,6 +171,7 @@
   font-family: "Joyride W05 STD";
   text-transform: uppercase;
   color: white;
+  text-align: center;
 }
 .section3content > h3 {
   width: 100%;
@@ -211,6 +212,11 @@
   color: white;
   text-align: center;
 }
+
+
+/* -----------------------------------------------------------------------------  section4content ------- */
+
+
 .section4content {
   width: 100%;
   height: 100%;
@@ -270,6 +276,11 @@
   font-family: "Joyride W05 STD";
   font-size: 1rem;
 }
+
+
+/* ------------------------------------------------------------------------------------  section5content ------- */
+
+
 .section5content {
   width: 100%;
   height: 100%;
@@ -319,6 +330,11 @@ font-size: 1rem;
   padding: 10px;
   font-size: 0.5rem;
 }
+
+
+/* ------------------------------------------------ section6 ------- */
+
+
 .section6content {
   width: 100%;
   height: 100%;
@@ -389,7 +405,148 @@ font-size: 1rem;
 
 
 
-@media (min-width: 600px) and (max-width: 1300px) {
-  /* Styles for screen widths between 600px and 1200px */
- 
+@media (min-width:0px) and (max-width:450px) {
+
+  .scroll-section{
+    padding: 10px;
+  }
+  .section1content{
+    padding: 0px;
+  }
+  .section1content h1{
+    font-size: 3rem;
+  }
+  .section1content h3{
+    font-size: 2rem;
+    word-spacing: -5px;
+  }
+  .section1content p{
+    margin: 40px 0px;
+  }
+  .section1content_buttoncontainer{
+    flex-direction: column;
+  }
+  .section1content_buttoncontainer_button{
+    width: 90%;
+    margin: 10px 0px;
+  }
+
+
+  /* ------------------------------------------  .section2content  --- */
+
+
+  .section2content{
+    padding: 0px;
+  }
+  .section2content > h1{
+    font-size: 2.4rem;
+  }
+  .section2content > h3{
+    font-size: 2rem;
+    line-height: 35px;
+  }
+  .section2content > p{
+    font-size:1rem;
+    line-height: 22px;
+  }
+
+
+  /*--------------------------------------------  .section3content_headingbox ----- */
+
+
+  .section3content_headingbox{
+    flex-direction: column;
+    padding: 5px 0px;
+  }
+  .section3content > h1{
+    font-size: 1.5rem;
+  }
+  .section3content > h3{
+    font-size: 1.3rem;
+    padding: 0px;
+  }
+  .section3content_headingbox > h3{
+    font-size: 0.8rem;
+    margin: 10px 0px;
+  }
+  .section3content_headingbox > p{
+    padding: 10px 0px;
+    line-height: 12px;
+  }
+
+
+  /* ----.section4content_box > button */
+
+
+  .section4content_container{
+    flex-direction: column;
+  }
+  .section4content_box > button{
+    padding: 10px 50px;
+    font-size: 0.5rem;
+  }
+  .section4content_box > h3{
+    padding: 0px;
+  }
+
+  .section4content_box{
+    width: 100%;
+    margin: 10px;
+  }
+
+  .section4content_box > p{
+    padding: 0px 5px;
+  }
+
+  /* ---------------------------------------------  .section5content_container */
+
+  .section5content > h2{
+    font-size: 0.8rem;
+  }
+  .section5content_container{
+    flex-direction: column;
+  }
+  .section5content_box{
+    width: 88%;
+    min-height: 16%;
+    padding: 2px 5px;
+    margin: 10px 0px;
+  }
+  .section5content_box > h3{
+    padding: 0px;
+    font-size: 0.5rem;
+  }
+  .section5content_box > p{
+    padding: 2px 0px;
+    font-size: 0.4rem;
+  }
+
+/* ------------------------------------------------------  .section6content > h2 ---- */
+
+.section6content > h2{
+  font-size: 0.7rem;
+  margin-bottom: 10px;
+}
+.section6content_container{
+  flex-direction: column;
+  justify-content: center;
+}
+.section6content_box{
+  width: 98%;
+  padding: 5px 15px;
+  margin: 8px 0px;
+}
+.section6content_box > h3{
+  padding: 0px;
+  font-size: 0.6rem;
+}
+.section6content_box > h4{
+  padding: 2px 0px;
+  font-size: 0.5rem;
+}
+.section6content_box > p{
+  padding: 2px 0px;
+  font-style: 0.4rem;
+}
+
 }
